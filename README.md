@@ -69,39 +69,6 @@ A modern full-stack task management application with JWT authentication, built u
 
 ---
 
-## 📁 Project Structure
-
-task-management-app/
-├── backend/
-│ ├── src/
-│ │ ├── config/ # Database configuration
-│ │ ├── controllers/ # Request handlers
-│ │ ├── middleware/ # Authentication & validation
-│ │ ├── models/ # MongoDB schemas
-│ │ ├── routes/ # API routes
-│ │ ├── utils/ # Helper functions
-│ │ ├── app.js # Express app setup
-│ │ └── server.js # Server entry point
-│ ├── .env # Environment variables
-│ └── package.json
-│
-├── frontend/
-│ ├── src/
-│ │ ├── components/ # Reusable React components
-│ │ ├── contexts/ # Global state management
-│ │ ├── pages/ # Page-level components
-│ │ ├── services/ # API service calls
-│ │ ├── utils/ # Utility functions
-│ │ ├── App.jsx # Main App component
-│ │ └── main.jsx # Application entry point
-│ ├── .env # Frontend environment variables
-│ └── package.json
-│
-└── README.md # Project documentation
-
-
----
-
 ## 🚀 Getting Started
 
 1. Clone the repository  
