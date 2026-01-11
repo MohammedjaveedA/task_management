@@ -1,97 +1,146 @@
-Base URL: http://localhost:5000/api
+# Task Management API Documentation
 
-🔐 1. AUTHENTICATION ENDPOINTS
+**Base URL:** `http://localhost:5000/api`
 
-Register New User
-Method: POST
-URL: http://localhost:5000/api/auth/register
-Headers:
-  Content-Type: application/json
-Body (JSON):
+---
+
+## 🔐 1. Authentication Endpoints
+
+### Register New User
+
+* **Method:** POST
+* **URL:** `/auth/register`
+* **Headers:**
+
+  * `Content-Type: application/json`
+* **Body (JSON):**
+
+```json
 {
   "email": "test@example.com",
   "password": "password123",
   "firstName": "John",
   "lastName": "Doe"
 }
-✅ Save Response Token: Copy the token from response to use in other requests.
+```
 
-Login User
-Method: POST
-URL: http://localhost:5000/api/auth/login
-Headers:
-  Content-Type: application/json
-Body (JSON):
+* **Note:** Save the token from the response for authenticated requests.
+
+---
+
+### Login User
+
+* **Method:** POST
+* **URL:** `/auth/login`
+* **Headers:**
+
+  * `Content-Type: application/json`
+* **Body (JSON):**
+
+```json
 {
   "email": "test@example.com",
   "password": "password123"
 }
+```
 
-Get Current User
-Method: GET
-URL: http://localhost:5000/api/auth/me
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
-  Content-Type: application/json
+---
 
-Logout User
-Method: POST
-URL: http://localhost:5000/api/auth/logout
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+### Get Current User
 
+* **Method:** GET
+* **URL:** `/auth/me`
+* **Headers:**
 
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+  * `Content-Type: application/json`
 
-  👤 2. PROFILE ENDPOINTS
+---
 
-Get User Profile
-Method: GET
-URL: http://localhost:5000/api/profile
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+### Logout User
 
-Update User Profile
-Method: PUT
-URL: http://localhost:5000/api/profile
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
-  Content-Type: application/json
-Body (JSON):
+* **Method:** POST
+* **URL:** `/auth/logout`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+## 👤 2. Profile Endpoints
+
+### Get User Profile
+
+* **Method:** GET
+* **URL:** `/profile`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+### Update User Profile
+
+* **Method:** PUT
+* **URL:** `/profile`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+  * `Content-Type: application/json`
+* **Body (JSON):**
+
+```json
 {
   "firstName": "Jane",
   "lastName": "Smith"
 }
+```
 
+---
 
+## 📝 3. Task Endpoints
 
+### Get All Tasks
 
-📝 3. TASK ENDPOINTS
+* **Method:** GET
+* **URL:** `/tasks`
+* **Headers:**
 
-Get All Tasks
-Method: GET
-URL: http://localhost:5000/api/tasks
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
 
-Get Tasks with Filters
-Method: GET
-URL: http://localhost:5000/api/tasks?status=pending&priority=high&sortBy=-createdAt
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+---
 
-Get Single Task
-Method: GET
-URL: http://localhost:5000/api/tasks/{task_id}
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+### Get Tasks with Filters
 
-Create New Task
-Method: POST
-URL: http://localhost:5000/api/tasks
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
-  Content-Type: application/json
-Body (JSON):
+* **Method:** GET
+* **URL:** `/tasks?status=pending&priority=high&sortBy=-createdAt`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+### Get Single Task
+
+* **Method:** GET
+* **URL:** `/tasks/{task_id}`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+### Create New Task
+
+* **Method:** POST
+* **URL:** `/tasks`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+  * `Content-Type: application/json`
+* **Body (JSON):**
+
+```json
 {
   "title": "Complete project",
   "description": "Finish all tasks",
@@ -100,32 +149,56 @@ Body (JSON):
   "dueDate": "2024-12-31",
   "tags": ["work", "urgent"]
 }
+```
 
-Update Task
-Method: PUT
-URL: http://localhost:5000/api/tasks/{task_id}
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
-  Content-Type: application/json
-Body (JSON):
+---
+
+### Update Task
+
+* **Method:** PUT
+* **URL:** `/tasks/{task_id}`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+  * `Content-Type: application/json`
+* **Body (JSON):**
+
+```json
 {
   "status": "completed"
 }
+```
 
-Delete Task
-Method: DELETE
-URL: http://localhost:5000/api/tasks/{task_id}
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+---
 
-Search Tasks
-Method: GET
-URL: http://localhost:5000/api/tasks/search?q=project
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+### Delete Task
 
-Get Task Statistics
-Method: GET
-URL: http://localhost:5000/api/tasks/stats
-Headers:
-  Authorization: Bearer YOUR_TOKEN_HERE
+* **Method:** DELETE
+* **URL:** `/tasks/{task_id}`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+### Search Tasks
+
+* **Method:** GET
+* **URL:** `/tasks/search?q=project`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+### Get Task Statistics
+
+* **Method:** GET
+* **URL:** `/tasks/stats`
+* **Headers:**
+
+  * `Authorization: Bearer YOUR_TOKEN_HERE`
+
+---
+
+📌 **Note:** All protected routes require a valid JWT token in the `Authorization` header.
